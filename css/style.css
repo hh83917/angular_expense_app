@@ -1,0 +1,80 @@
+html body {
+  margin: 0 auto;
+}
+
+body {
+  background-color: #b1e0f5;
+}
+
+/*general use styling*/
+.alignCenter {
+  text-align: center;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+
+/*main content area*/
+.main {
+  margin: 0 auto;
+  background-color: #fff2c6;
+  height: 100%;
+  width: 900px;
+  padding: 20px;
+}
+
+.appTitle {
+  text-align: center;
+  font-family: monospace;
+}
+
+/*add new expense form*/
+.addANewExpense {
+  height: auto;
+  width: 40%;
+  margin-left: 30px;
+}
+
+.addANewExpense form {
+  text-align: center;
+  background-color: #b1e0f5;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+/*search input*/
+.searchBox {
+  font-family: sans-serif;
+  padding-left: 30px;
+}
+
+
+/*table*/
+.expTable {
+  border: 1px solid black;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.expTable tbody {
+  overflow: auto;
+}
+
+.expTable th {
+  background-color: #e7b263;
+}
+
+tr:nth-child(even) {
+  background-color: #e4e4e4;
+}
+
+tr:nth-child(odd) {
+  background-color: white;
+}
+
+tbody tr:last-child {
+  font-weight: bold;
+  text-decoration: underline;
+}

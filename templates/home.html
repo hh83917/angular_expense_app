@@ -1,0 +1,105 @@
+<div class="">
+  <div class="addANewExpense">
+    <button ng-show="newExpBtn" type="button" ng-click="showNewExpForm()">Add New Expense</button>
+    <br>
+    <form ng-show="newExpForm" class="" action="index.html" method="post">
+      Merchane Name: <input type="text" placeholder="Name..." ng-model="newExp.merchant"><br>
+
+      Date: <input type="date" placeholder="yyyy-MM-dd" ng-model="newExp.date"><br>
+
+      Total Expense : <input type="number" min="1" step="any" placeholder="Enter amount..." ng-model="newExp.total"><br>
+
+      Comment: <br><textarea rows="4" cols="40" ng-model="newExp.comment" placeholder="Enter comment..."></textarea><br>
+      <button type="button" name="button" ng-click="addNewExp()">Add Expense</button>
+      <button type="button" name="button" ng-click="cancelAdd()">Close</button>
+    </form>
+  </div>
+  <br>
+  <br>
+    <div class="searchBox">
+      Search: <input type="text" placeholder="Merchant name..." ng-model="searchMerchant.merchant">
+    </div>
+  <h3>Expenses:</h3>
+  <div class="">
+    <table class="expTable">
+      <thead>
+        <th>Edit</th>
+        <th>Status</th>
+        <th>Merchant Name</th>
+        <th>Date</th>
+        <th>Expense (Inc. Tax)</th>
+        <th>Comment</th>
+      </thead>
+      <tbody>
+        <tr ng-if="expense.status === 'New'" ng-repeat="expense in expenses | filter: searchMerchant">
+          <td class="alignCenter">
+            <button ng-hide="showEdit" type="button" ng-click="editExp(expense)">Edit</button>
+            <button ng-show="showEdit" type="button" ng-click="saveEdit(expense)">Save</button>
+            <button ng-show="showEdit" type="button" ng-click="removeExp(expense)">Delete</button>
+          </td>
+          <td class="alignCenter">
+            <div ng-hide="showEdit">{{expense.status}}</div>
+            <select ng-show="showEdit" ng-model="expense.status" class="" name="">
+              <option value="New">New</option>
+              <option value="Reimbursed">Reimbursed</option>
+            </select>
+          </td>
+          <td class="alignRight">
+            <div ng-hide="showEdit">{{expense.merchant}}</div>
+            <input class="alignRight" ng-show="showEdit" ng-model="expense.merchant" type="input" name="name"  placeholder="{{expense.merchant}}">
+          </td>
+          <td class="alignCenter">
+            <div ng-hide="showEdit">{{expense.date | date: mediumDate}}</div>
+            <input ng-show="showEdit" ng-model="expense.date" type="date" placeholder="yyyy-MM-dd" value="{{expense.date | date:'yyyy-MM-dd'}}">
+          </td>
+          <td class="alignRight">
+            <div ng-hide="showEdit">{{expense.total | currency}}</div>
+            <input class="alignRight" ng-show="showEdit" ng-model="expense.total" type="number" value="0" placeholder="{{expense.total}}">
+          </td>
+          <td class="alignRight">
+            <div ng-hide="showEdit">{{expense.comment}}</div>
+            <textarea ng-show="showEdit" ng-model="expense.comment" type="input" name="name" value="" placeholder="{{expense.comment}}"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="alignCenter">Total Expenses:</td>
+          <td class="alignRight">{{calcTotalExpenses() | currency}}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Reimbursed:</h3>
+  <div class="">
+    <table class="expTable">
+      <thead>
+        <th>Status</th>
+        <th>Merchant Name</th>
+        <th>Date</th>
+        <th>Expense (Inc. Tax)</th>
+        <th>Comment</th>
+      </thead>
+      <tbody>
+        <tr ng-if="expense.status === 'Reimbursed'" ng-repeat="expense in expenses | filter: searchMerchant">
+          <td class="alignCenter">{{expense.status}}</td>
+          <td class="alignRight">{{expense.merchant}}</td>
+          <td class="alignCenter">{{expense.date | date: mediumDate}}</td>
+          <td class="alignRight">{{expense.total | currency}}</td>
+          <td class="alignRight">{{expense.comment}}</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td class="alignCenter">Total Reimbursed:</td>
+          <td class="alignRight">{{calcTotalReimbursed() | currency}}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

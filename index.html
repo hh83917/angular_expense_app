@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Expense Management</title>
+
+    <!-- Link CSS file -->
+    <link rel="stylesheet" href="css/style.css">
+
+  </head>
+  <body ng-app="expMgmtApp">
+    <div class="main">
+      <h1 class="appTitle">Expense Management</h1>
+      <div ng-view class=""></div>
+    </div>
+
+  </body>
+  <!-- angular cdn -->
+  <script src="https://code.angularjs.org/1.4.8/angular.js"></script>
+  <script src="https://code.angularjs.org/1.4.8/angular-route.js"></script>
+
+  <!-- components -->
+  <script src="js/script.js" charset="utf-8"></script>
+  <script src="js/homeCtrl.js" charset="utf-8"></script>
+  <script src="js/expService.js" charset="utf-8"></script>
+
+</html>
